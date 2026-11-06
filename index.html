@@ -1,0 +1,79 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Privacy Policy - Project Frontline</title><style>body{font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#fff;color:#1a1d24}
+main{max-width:46rem;margin:0 auto;padding:1rem 16px 3rem}h1{font-size:1.6rem}h2{font-size:1.15rem;margin-top:1.8rem}
+code{background:#eef0f4;padding:0 .25em;border-radius:3px;word-break:break-all}
+@media(prefers-color-scheme:dark){body{background:#12151b;color:#e6e8ee}code{background:#232833}a{color:#8ab4ff}}</style></head><body><main>
+<h1>Privacy Policy: Project Frontline</h1>
+<p>Last updated: 2026-11-04 (DRAFT: the owner must read, complete the marked placeholders and confirm every statement before publishing)</p>
+<p>Project Frontline ("the game", package <code>com.frontline.game</code>) is an idle 5v5 hero shooter for Android. It is published by Steve Foyston. Contact: <a href="mailto:stevefoyston@gmail.com">stevefoyston@gmail.com</a>.</p>
+<p>The short version: the game works fully offline with no account. If you choose to go online, the game stores a random id and a copy of your save on our server. Rewarded video ads are optional and only shown if you tap Watch Ad; we use no analytics service of our own. The game offers optional in-app purchases (processed by Google Play); see section 5a.</p>
+<h2>1. What stays on your device</h2>
+<p>Your progress (heroes, currencies, stage progress, settings such as camera options, Training mode profile, the time used to calculate offline rewards) is saved in files on your phone. A small local diagnostic log (crash and error messages the game writes for itself) is also kept on the device. These are not sent anywhere by the game. They are removed when you clear the app's data or uninstall.</p>
+<p>Android may back up app data to your Google account if you have Android backup switched on; that is handled by Android and Google, not by us.</p>
+<h2>2. The optional online account</h2>
+<p>You can play without any account. When the game can reach its server, it may:</p>
+<ul>
+<li><strong>Create a guest account.</strong> The game makes a random device id (a random number generated on your phone, not your Android advertising id or hardware id) and sends it to the server. The server keeps only a hash of it, plus a guest id (like <code>p_1234abcd...</code>), a default display name (like "Guest-3F2A") and the dates the account was created and last used.</li>
+<li><strong>Sign you in with Google (optional, via Google Play Games).</strong> If you tap "Sign in with Google", Google Play Games gives the game a one-time code. Our server sends that code to Google to check it, and Google tells the server your Google account's stable identifier (called <code>sub</code>). <strong>The server stores only that identifier</strong>, linked to your guest id and the link date. Our code does not save your Google name, email address or profile picture. (Google's verification reply can include an email address and its verified flag; the server checks them during sign-in and does not store them.) Signing in with Google lets you restore your progress on a new phone.</li>
+<li><strong>Keep a cloud copy of your save.</strong> The server stores your latest save (the same data described in section 1: heroes, currencies, stage progress and similar) and up to the last 10 earlier versions, with their size and a checksum. If you link a Google account and choose which of two saves to keep, the one you did not keep may be archived on the server (not deleted) so it can be recovered.</li>
+<li><strong>Store a few progress numbers</strong> reported by the game: rank points, rank tier, highest idle stage and squad power, used for ranking and plausibility checks.</li>
+<li><strong>Optional password accounts.</strong> The server supports usernames and passwords (passwords are stored only as salted scrypt hashes). The current game does not offer this in its screens (to be confirmed by the owner).</li>
+</ul>
+<h2>3. What other players can see</h2>
+<p>The server includes a feature for asynchronous arena battles and leaderboards. If you take part:</p>
+<ul>
+<li>Your <strong>defence squad snapshot</strong> (which heroes, their levels and power, your display name) is stored and shown to other players who are matched against you. They fight a copy of your squad; they cannot see your inventory, save or Google identity.</li>
+<li>Your <strong>display name, rating, division, and a public player id</strong> (<code>p_...</code>, a random id with no connection to your Google account) appear to opponents. Leaderboards show rank, display name and rating only.</li>
+<li>Arena battle logs (opponent, win or loss, rating change, date) are stored for both sides.</li>
+</ul>
+<p>Status: these server features exist, but the game screens that use them are not yet connected (to be confirmed by the owner before release). Do not publish this section until you have checked what the shipped build actually does. Your display name is the default "Guest-XXXX" unless you change it.</p>
+<p>There is no chat, friend feature or user-generated content visible in the game itself.</p>
+<h2>4. Server logs</h2>
+<p>Our web server writes an access log line for each request: your IP address, the request method, the path (without query parameters) and the response status. It does <strong>not</strong> log request bodies, headers, passwords, tokens, auth codes or your save. The server also writes a local event file (sign-ins, account deletions and similar server events with the guest id); nothing is sent to a third party. The retention period of these logs on the server is a limited time (we aim to keep them no longer than 30 days). Nightly backups of the server database are kept for 14 days (the 14 newest copies).</p>
+<h2>5. What we do not do</h2>
+<ul>
+<li>No ads you did not ask for: the only ads are optional rewarded videos you start yourself (section 5b).</li>
+<li>No analytics or tracking service. The game does not include third-party analytics code. (The Unity engine's project settings have the cloud analytics, crash reporting, purchasing and ads services switched off; whether the Unity engine itself sends any basic runtime data on Android is to be confirmed by the owner.)</li>
+<li>Gems and tickets can be earned by playing, and optional purchases exist (section 5a). Summon odds are shown in the game, also before you buy anything that contains summons.</li>
+<li>We do not sell your data and do not share it with anyone except the service providers in section 6.</li>
+</ul>
+<h2>5a. Purchases (optional)</h2>
+<ul>
+<li>Payments are handled entirely by <strong>Google Play</strong>. We never see your card or payment details.</li>
+<li>When you buy something, Google Play gives the game a purchase token. The game sends it, with the product id, to our server so we can check with Google that the purchase is real and unlock what you bought. The server keeps a purchase record: the Google order id, the product id, a one-way hash of the purchase token (not the token itself), the time, the state of the purchase (granted, voided) and your player id; plus what the purchase unlocked, per-day purchase counts and which first-purchase bonuses were used. The game also passes Google a pseudonymous account id (a hash of your player id) with each purchase.</li>
+<li>Buying requires an internet connection. If the connection drops after you paid, the game keeps the purchase and finishes the unlock when you are online again; &quot;Restore purchases&quot; repeats this.</li>
+<li>If Google refunds or reverses a purchase, Google tells our server and the related unlock is removed.</li>
+<li>For questions or problems with a purchase, use Google Play's order help or contact us at <a href="mailto:stevefoyston@gmail.com">stevefoyston@gmail.com</a>. Your statutory consumer rights are not affected by anything in this policy.</li>
+<li>If you delete your account, your unlocks and purchase counters are deleted. The purchase record (order id, product id, token hash, time, state) is kept without your player id for accounting and for handling refunds from Google.</li>
+</ul>
+<h2>5b. Rewarded ads (optional)</h2>
+<ul>
+<li><strong>What:</strong> if you tap WATCH AD, the game asks Google AdMob for a short video ad. The Google Mobile Ads SDK and Google's consent component (User Messaging Platform) are only started the first time you open the Free Rewards screen, not at launch, and never during battles or summons.</li>
+<li><strong>Data the ad SDK may collect and send to Google and its ad partners:</strong> your device's advertising id (you can reset or opt out of it in Android settings), IP address, device and app information (model, OS version, app version, language), ad interaction data (an ad loaded, was shown, was completed) and approximate location derived from the IP address, used to choose and measure ads and to prevent fraud. We do not receive this data and do not link it to your player id.</li>
+<li><strong>Consent:</strong> where the law requires it (for example the EU, EEA and UK) the game shows Google's consent form before any ad is requested, and you can change your choice later (Free Rewards &gt; AD PRIVACY, when shown). If you decline, no ad is requested and the free rewards are unavailable. Elsewhere ads may be personalised unless you switch that off in Android settings (Settings &gt; Google &gt; Ads).</li>
+<li><strong>Age:</strong> ads are not for children (section 8). The game is intended for players aged 16 and over, and its ads are not directed at children.</li>
+<li><strong>Limits:</strong> a few rewarded ads per day with waiting times; the counters are stored in your save on your device (and your cloud save).</li>
+<li><strong>Partners:</strong> Google LLC (AdMob) and the ad networks and advertisers in its auctions (see Google's "How Google uses information from sites or apps that use our services"). No ad mediation networks are configured in the game.</li>
+</ul>
+<h2>6. Who handles data</h2>
+<ul>
+<li><strong>Hosting:</strong> the server runs on a rented virtual private server (VPS) from a commercial hosting company.</li>
+<li><strong>Google:</strong> Google Play (purchases), Google AdMob (rewarded ads, section 5b) and, if you choose it, Sign in with Google. Google's own privacy policy applies to Google's handling of your Google account.</li>
+</ul>
+<h2>7. Security</h2>
+<p>The game talks to the server only over TLS-encrypted HTTPS, and the app checks the server's certificate against a certificate fingerprint built into the app ("certificate pinning"), so a network attacker should not be able to read or change what is sent. Guest ids and login tokens are stored on your phone; refresh tokens are stored on the server only as hashes; passwords (if used) as salted hashes. No system is perfectly secure. (This describes the code; the pinned connection has not yet been verified end to end on a device, to be confirmed by the owner before release.)</p>
+<h2>8. Children</h2>
+<p>The game is not directed to children under 13 (or the higher age in your country) and we do not target the Play "Designed for Families" program. We do not knowingly collect personal information from children. If you believe a child has an online account with us, contact us and we will delete it.</p>
+<h2>9. Retention and deleting your data</h2>
+<ul>
+<li><strong>In the app:</strong> Settings &gt; Account &gt; Delete online account calls the server's account deletion. This deletes your guest id, Google link, device mapping, login sessions, cloud save and its backups and archived saves, arena entry and defence snapshot, hero statistics, event scores, party/queue/friend entries.</li>
+<li><strong>If you cannot use the app,</strong> use the web page <a href="https://foysp.github.io/frontline-privacy/delete/">https://foysp.github.io/frontline-privacy/delete/</a> or email <a href="mailto:stevefoyston@gmail.com">stevefoyston@gmail.com</a> from any address, and send your player id (the <code>p_...</code> id; shown on Settings > Account) or, if you cannot, tell us you used Google sign-in and we will ask you to confirm by signing in again. See <code>docs/ACCOUNT_DELETION.md</code>.</li>
+<li>Some records may remain for a limited time: arena battle logs may keep your opponent's side of a fight with your old display name, server access logs (section 4), and backups until they roll off (14 days).</li>
+<li>Uninstalling the app removes local data on your phone but does not delete the server account: use the steps above first.</li>
+</ul>
+<h2>10. Your rights</h2>
+<p>Depending on where you live (for example the EU, UK or California) you may have the right to access, correct or delete your data, to object to or restrict processing, and to complain to a data protection authority. Email <a href="mailto:stevefoyston@gmail.com">stevefoyston@gmail.com</a>.</p>
+<h2>11. Changes</h2>
+<p>If we change what data the game collects, we will update this page and the date above before releasing the change.</p>
+<h2>12. Contact</h2>
+<p>Steve Foyston · <a href="mailto:stevefoyston@gmail.com">stevefoyston@gmail.com</a></p>
+<p><a href="delete/">Delete your account</a></p></main></body></html>
